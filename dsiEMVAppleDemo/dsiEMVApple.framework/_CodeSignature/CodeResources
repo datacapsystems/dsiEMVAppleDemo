@@ -4,44 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/DSIEMVApple.h</key>
-		<data>
-		+9NbFbQV81kOxGmteSYJDg3f8sg=
-		</data>
 		<key>Info.plist</key>
 		<data>
-		bBRPrXuiJofC9dVvLS3WSpWexZQ=
-		</data>
-		<key>Modules/module.modulemap</key>
-		<data>
-		U7+49BwCfjrWbVJpRFmHcPxh040=
+		MPgNV+/4kupCgjgeC5H/egKugBc=
 		</data>
 	</dict>
 	<key>files2</key>
-	<dict>
-		<key>Headers/DSIEMVApple.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			+9NbFbQV81kOxGmteSYJDg3f8sg=
-			</data>
-			<key>hash2</key>
-			<data>
-			fzlelhjQZLeFX+3LH4FVziEuyzIBUkT0AjhV0qifiCY=
-			</data>
-		</dict>
-		<key>Modules/module.modulemap</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			U7+49BwCfjrWbVJpRFmHcPxh040=
-			</data>
-			<key>hash2</key>
-			<data>
-			oNydxsuCvPg4aHwfx1ZRKo3hu8Ya7Ja1Grd2bcgXFW8=
-			</data>
-		</dict>
-	</dict>
+	<dict/>
 	<key>rules</key>
 	<dict>
 		<key>^.*</key>
