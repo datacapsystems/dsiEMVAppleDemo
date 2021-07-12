@@ -102,20 +102,22 @@ static NSString* static_nsNoDevice = @"NO DEVICE";
     UIAlertController*  m_PleasewaitPairingDevice;  // "Please Wait Pairing Device" message window.
     bool                m_bSelectDevice;            // Is the "SELECT DEVICE" functionality being executed?
     int                 m_iWakeupType;              // What type of functionality should execute on the worker thread?
+    int                 m_iDownloadDevice;          // Download device count (0, 1, or 2).
 }
 
 enum eThreadMethod
 {
-    eThreadSleeping     = 0,
-    eSelectDevice       = 1,
-    eSaleTransaction    = 2,
-    eReturnTransaction  = 3,
-    eCancelTranaction   = 4,
-    eParamDownload      = 5,
-    eDeviceInfo         = 6,
-    ePairDevice         = 7,
-    eStopThread         = 8,
-    eSocketTransaction  = 9
+    eThreadSleeping         = 0,
+    eSelectDevice           = 1,
+    eSaleTransaction        = 2,
+    eReturnTransaction      = 3,
+    eCancelTranaction       = 4,
+    eEMVParamDownload       = 5,
+    eMerchantParamDownload  = 6,
+    eDeviceInfo             = 7,
+    ePairDevice             = 8,
+    eStopThread             = 9,
+    eSocketTransaction      = 10
 };
 
 enum eControlId
@@ -136,14 +138,18 @@ enum eControlId
 {
     m_dsiAppleClientLib         = nil;
     m_bleApple                  = nil;
+    m_ipSocketServer            = nil;
     m_nsWorkerThread            = nil;
     m_nsIPServerThread          = nil;
     m_nsRequest                 = nil;
     m_nsReponse                 = nil;
+    m_nsSocketRequest           = nil;
+    m_nsSocketResponse          = nil;
     m_PleasewaitGettingDevices  = nil;
     m_PleasewaitPairingDevice   = nil;
     m_bSelectDevice             = false;
     m_iWakeupType               = eThreadSleeping;
+    m_iDownloadDevice           = 0;
     
     return self;
 }
@@ -244,10 +250,11 @@ enum eControlId
     [ self CancelTransaction ];
 }
 
-- ( IBAction ) ParamDownLload : ( id ) sender
+- ( IBAction ) ParamDownLoad : ( id ) sender
 {
     [ self ClearTextViews ];
-    [ self WakeupThread : eParamDownload ];
+    ( (  UITextView*  ) [ self.view viewWithTag : eMessageDisplayViewId ] ).text = @"LOADING MERCHANT PARAMETERS...";
+    [ self WakeupThread : eMerchantParamDownload ];
 }
 
 - ( IBAction ) DeviceInfo : ( id ) sender
@@ -321,7 +328,7 @@ enum eControlId
                     "</Amount>"
                     "<InvoiceNo>10</InvoiceNo>"
                     "<SequenceNo>0010010010</SequenceNo>"
-                    "<OperationMode>TEST</OperationMode>"
+                    "<OperationMode>CERT</OperationMode>"
                     "<BluetoothDeviceName>%@</BluetoothDeviceName>"
                 "</Transaction>"
             "</TStream>";
@@ -555,7 +562,8 @@ enum eControlId
                 
             case eSaleTransaction:
             case eReturnTransaction:
-            case eParamDownload:
+            case eMerchantParamDownload:
+            case eEMVParamDownload:
                 {
                     if ( eSaleTransaction == _ViewController->m_iWakeupType )
                     {
@@ -564,6 +572,10 @@ enum eControlId
                     else if ( eReturnTransaction == _ViewController->m_iWakeupType )
                     {
                         nsTranCode = @"EMVReturn";
+                    }
+                    else if ( eMerchantParamDownload == _ViewController->m_iWakeupType )
+                    {
+                        nsTranCode = @"LoadParams";
                     }
                     else
                     {
@@ -609,6 +621,13 @@ enum eControlId
                 //    break;
                 //case eStopThread:
                 //    break;
+        }
+        
+        if ( eMerchantParamDownload == _ViewController->m_iWakeupType )
+        {
+            _ViewController->m_iWakeupType = eEMVParamDownload;
+            _ViewController->m_iDownloadDevice = 1;
+            [ self ProcessWakeupType : _ViewController ];
         }
         
         _ViewController->m_iWakeupType = eThreadSleeping;
@@ -794,7 +813,26 @@ enum eControlId
 - ( void ) transactionResponse : ( NSString* ) response
 {
     // Delegate called when ProcessTransaction or GetDevicesInfo is called.
-    ( (  UITextView*  ) [ self.view viewWithTag : eTransactionResultsViewId ] ).text = response;
+    
+    if ( 2 == m_iDownloadDevice )
+    {
+        NSString* prevText = ( (  UITextView*  ) [ self.view viewWithTag : eTransactionResultsViewId ] ).text;
+        NSMutableString* mutableText = [ NSMutableString stringWithString : prevText ];
+        [ mutableText appendString : @"\n\n" ];
+        [ mutableText appendString : response ];
+        ( (  UITextView*  ) [ self.view viewWithTag : eTransactionResultsViewId ] ).text = mutableText;
+        
+        m_iDownloadDevice = 0;
+    }
+    else
+    {
+        ( (  UITextView*  ) [ self.view viewWithTag : eTransactionResultsViewId ] ).text = response;
+        
+        if ( 1 == m_iDownloadDevice )
+        {
+            ++m_iDownloadDevice;
+        }
+    }
 }
 
 @end
@@ -910,7 +948,7 @@ enum eControlId
     
     if ( nil != nsTransactionXML )
     {
-        const unsigned int uiMaxWaitTime = 360; // 90 seconds ( 360 X 0.25 seconds )
+        const unsigned int uiMaxWaitTime = 1200; // 300 seconds ( 1200 X 0.25 seconds )
         
         // Start the process of starting the transaction using Datacap's library.
         dispatch_sync( dispatch_get_main_queue( ),
@@ -918,7 +956,7 @@ enum eControlId
             [ _ViewController SocketTransaction : nsTransactionXML ];
         });
         
-        // Wait for the transaction to complete (up to 30 seeconds).
+        // Wait for the transaction to complete (up to 30 seconds).
         
         for ( unsigned int ui = 0; ui < uiMaxWaitTime; ++ui )
         {
