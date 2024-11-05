@@ -1,6 +1,6 @@
 # dsiEMVAppleDemo
 
-The dsiEMVApple demo application provides a sample dsiEMVApple integration using Objective-C. Using header file dsiEMVApple.h, Swift applications can use any of the Datacap's xcframework functionality by creating a bridging header.
+The dsiEMVApple demo application provides a sample dsiEMVApple integration using Objective-C. Using header file dsiEMVApple.h, Swift applications can use any of Datacap's xcframework functionality by creating a bridging header.
 
 
 # Getting started with dsiEMVApple
