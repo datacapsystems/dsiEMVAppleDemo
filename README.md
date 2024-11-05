@@ -72,7 +72,7 @@ On Bluetooth Connection:
 ```objective-c
 - ( void ) connectionResponse : ( NSString* ) response
 {
-    // Called with response from EstablishBluetoothConnection
+	// Called with response from EstablishBluetoothConnection
 }
 ```
 
@@ -80,7 +80,7 @@ On Transaction Response:
 ```objective-c
 - (void)transactionResponse : ( NSString* ) response
 {
-    // Called with response from ProcessTransaction or GetDevicesInfo
+	// Called with response from ProcessTransaction or GetDevicesInfo
 }
 ```
 
@@ -88,7 +88,7 @@ On Display Message:
 ```objective-c
 - (void)displayMessage : ( NSString* ) message
 {
-  //  Called when a message is generated from payment capture device
+	//  Called when a message is generated from payment capture device
 }
 ```
 
@@ -98,29 +98,30 @@ On SAF Event Message
 {
 	// Called after a SAF_ForwardAll was sent, for every forwarded transaction
 
-    // Method parameter description
-    // (1) message: error text when iStateCode is non-zero or transaction response XML for current transaction forwarded when iStateCode is zero.
-    // (2) iStateCode: zero when no error, or error code.
-    // (3) iTotalOperations: zero when non-zero in iStateCode, or total number ot transactions to forward when iStateCode is zero.
-    // (4) iCurrentOperation: zero when non-zero in iStateCode, or current transaction number while forwarding when iStateCode is zero.
+	// Method parameter description
+	// (1) message: error text when iStateCode is non-zero or transaction response XML for current transaction forwarded when iStateCode is zero.
+	// (2) iStateCode: zero when no error, or error code.
+	// (3) iTotalOperations: zero when non-zero in iStateCode, or total number ot transactions to forward when iStateCode is zero.
+	// (4) iCurrentOperation: zero when non-zero in iStateCode, or current transaction number while forwarding when iStateCode is zero.
 }
 ```
 
 On SAF Forward All Event Running
+```objective-c
 - ( void ) setSAFForwardAllEventRunning : ( const bool ) bIsRunning
 {
-    // Delegate called when a SAF_ForwardAll is started (bIsRunning is 'true'), and when it has completed (bIsRunning is 'false').
-    // Note: Inbetween both of these calls, delegate displaySAFEventMessage will be called for each forwarded transaction. When bIsRunning
-    // is 'false', that means that all forwarding has completed and the overall response XML will be generated and returned in the normal
-    // way (non-delegate usage).
+	// Delegate called when a SAF_ForwardAll is started (bIsRunning is 'true'), and when it has completed (bIsRunning is 'false').
+	// Note: Inbetween both of these calls, delegate displaySAFEventMessage will be called for each forwarded transaction. When bIsRunning
+	// is 'false', that means that all forwarding has completed and the overall response XML will be generated and returned in the normal
+	// way (non-delegate usage).
     
     if ( bIsRunning )
     {
-        // Starting forward all process
+		// Starting forward all process
     }
     else
     {
-        // Completed forward all process
+		// Completed forward all process
     }
 }
 ```
