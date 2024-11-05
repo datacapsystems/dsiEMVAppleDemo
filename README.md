@@ -5,10 +5,10 @@ The dsiEMVApple demo application provides a sample dsiEMVApple integration using
 
 # Getting started with dsiEMVApple
 
-### Add dsiEMVApple.framework to your Xcode project
+### Add dsiEMVApple.xcframework to your Xcode project
 1. In the project navigator, select the project or group within a project to which you want to add the framework.
 2. Choose File > Add Files to “Your Project Name”.
-3. Select the dsiEMVApple.framework bundle, and click Add.
+3. Select the dsiEMVApple.xcframework, and click Add.
 4. In the project settings, choose the Build Phases tab.
 5. Under the Embed Frameworks section, choose "+" to add a new Embedded Framework.
 6. Select the dsiEMVApple.framework bundle, and click Add.
