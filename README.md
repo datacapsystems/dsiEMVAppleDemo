@@ -115,14 +115,14 @@ On SAF Forward All Event Running
 	// is 'false', that means that all forwarding has completed and the overall response XML will be generated and returned in the normal
 	// way (non-delegate usage).
     
-    if ( bIsRunning )
-    {
+	if ( bIsRunning )
+	{
 		// Starting forward all process
-    }
-    else
-    {
+	}
+	else
+	{
 		// Completed forward all process
-    }
+	}
 }
 ```
 
