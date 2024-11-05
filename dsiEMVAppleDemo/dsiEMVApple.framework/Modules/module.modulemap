@@ -1,6 +1,0 @@
-framework module dsiEMVApple {
-  umbrella header "dsiEMVApple.h"
-
-  export *
-  module * { export * }
-}

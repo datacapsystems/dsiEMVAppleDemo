@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC01BE1C2A17F8BF00B39C95 /* dsiEMVApple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD8DF272979CA6500AEDB93 /* dsiEMVApple.framework */; };
+		AC01BE1D2A17F8BF00B39C95 /* dsiEMVApple.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ACD8DF272979CA6500AEDB93 /* dsiEMVApple.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC0D3FFC255DA2EF00A9FF30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0D3FFB255DA2EF00A9FF30 /* AppDelegate.m */; };
 		AC0D3FFF255DA2EF00A9FF30 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0D3FFE255DA2EF00A9FF30 /* SceneDelegate.m */; };
 		AC0D4002255DA2EF00A9FF30 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0D4001255DA2EF00A9FF30 /* ViewController.m */; };
@@ -16,8 +18,6 @@
 		AC0D400D255DA2FD00A9FF30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0D400C255DA2FD00A9FF30 /* main.m */; };
 		AC0D4017255DA2FD00A9FF30 /* dsiClientLib_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0D4016255DA2FD00A9FF30 /* dsiClientLib_appTests.m */; };
 		AC0D4022255DA2FD00A9FF30 /* dsiClientLib_appUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0D4021255DA2FD00A9FF30 /* dsiClientLib_appUITests.m */; };
-		AC68A74E25B6226900FDE50D /* dsiEMVApple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC68A74D25B6226900FDE50D /* dsiEMVApple.framework */; };
-		AC68A74F25B6226900FDE50D /* dsiEMVApple.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC68A74D25B6226900FDE50D /* dsiEMVApple.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		AC68A75025B6226900FDE50D /* Embed Frameworks */ = {
+		AC01BE1E2A17F8BF00B39C95 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AC68A74F25B6226900FDE50D /* dsiEMVApple.framework in Embed Frameworks */,
+				AC01BE1D2A17F8BF00B39C95 /* dsiEMVApple.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,7 +72,8 @@
 		AC0D4023255DA2FD00A9FF30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC23274E259397AB001F6ACE /* dsiClientLib_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dsiClientLib_app.entitlements; sourceTree = "<group>"; };
 		AC23276725A60AD4001F6ACE /* dsiEMVApple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dsiEMVApple.h; sourceTree = "<group>"; };
-		AC68A74D25B6226900FDE50D /* dsiEMVApple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = dsiEMVApple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACD8DF1C29787B8900AEDB93 /* dsiEMVApple.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = dsiEMVApple.xcframework; path = ../../../../Library/Developer/Shared/dsiEMVApple.xcframework; sourceTree = "<group>"; };
+		ACD8DF272979CA6500AEDB93 /* dsiEMVApple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = dsiEMVApple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC68A74E25B6226900FDE50D /* dsiEMVApple.framework in Frameworks */,
+				AC01BE1C2A17F8BF00B39C95 /* dsiEMVApple.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +164,8 @@
 		AC0D4035255DBAE600A9FF30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AC68A74D25B6226900FDE50D /* dsiEMVApple.framework */,
+				ACD8DF272979CA6500AEDB93 /* dsiEMVApple.framework */,
+				ACD8DF1C29787B8900AEDB93 /* dsiEMVApple.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -178,7 +180,7 @@
 				AC0D3FF3255DA2EF00A9FF30 /* Sources */,
 				AC0D3FF4255DA2EF00A9FF30 /* Frameworks */,
 				AC0D3FF5255DA2EF00A9FF30 /* Resources */,
-				AC68A75025B6226900FDE50D /* Embed Frameworks */,
+				AC01BE1E2A17F8BF00B39C95 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -360,6 +362,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -420,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -477,7 +481,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = dsiClientLib_app/dsiClientLib_app.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = Q68NE4GJ3V;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = dsiClientLib_app/Info.plist;
@@ -486,7 +490,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = datacap.dsiClientLib.app;
 				PRODUCT_NAME = dsiEMVApple_Demo;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -500,7 +504,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = dsiClientLib_app/dsiClientLib_app.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = Q68NE4GJ3V;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = dsiClientLib_app/Info.plist;
@@ -509,7 +513,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = datacap.dsiClientLib.app;
 				PRODUCT_NAME = dsiEMVApple_Demo;
 				TARGETED_DEVICE_FAMILY = 1;
