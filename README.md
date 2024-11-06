@@ -11,11 +11,12 @@ The dsiEMVApple demo application provides a sample dsiEMVApple integration using
 3. Select the dsiEMVApple.xcframework, and click Add.
 4. In the project settings, choose the Build Phases tab.
 5. Under the Embed Frameworks section, choose "+" to add a new Embedded Framework.
-6. Select the dsiEMVApple.framework bundle, and click Add.
+6. Select the dsiEMVApple.xcframework, and click Add.
+7. [Download Datacap's xcframework](https://datacapsystems.com/software/dsiEMVApple/dsiEMVApple.xcframework.zip)!
 
 ### Include the framework in your code
 ```objective-c
-#import <dsiEMVApple/dsiEMVApple.h>
+#import < dsiEMVApple/dsiEMVApple.h >
 ```
 
 ### Initialize the library
@@ -59,14 +60,14 @@ nsRequest =
 nsResponse = [ m_dsiAppleClientLib ProcessTransaction : nsRequest ];
 ```
 
-### Optionally implement dsiEMVAppleDelegate
+### Optionally implement delegates using dsiEMVAppleDelegate
 
 ##### Implement the `dsiEMVAppleDelegate` protocol
 ```objective-c
 @interface ViewController : UIViewController < dsiEMVAppleDelegate >
 ```
 
-##### Implement `dsiEMVAppleDelegate` methods
+##### Implement `dsiEMVAppleDelegate` delegate methods
 
 On Bluetooth Connection:
 ```objective-c
@@ -78,7 +79,7 @@ On Bluetooth Connection:
 
 On Transaction Response:
 ```objective-c
-- (void)transactionResponse : ( NSString* ) response
+- ( void ) transactionResponse : ( NSString* ) response
 {
 	// Called with response from ProcessTransaction or GetDevicesInfo
 }
@@ -86,7 +87,7 @@ On Transaction Response:
 
 On Display Message:
 ```objective-c
-- (void)displayMessage : ( NSString* ) message
+- ( void ) displayMessage : ( NSString* ) message
 {
 	//  Called when a message is generated from payment capture device
 }
@@ -96,7 +97,7 @@ On SAF Event Message
 ```objective-c
 - ( void ) displaySAFEventMessage : ( NSString* ) message : ( const int ) iStateCode : ( const int ) iTotalOperations : ( const int ) iCurrentOperation
 {
-	// Called after a SAF_ForwardAll was sent, for every forwarded transaction
+	// Called after a SAF_ForwardAll was sent, for every transaction after that transaction has been forwarded and a response generated. If no error, the message is the response to the transaction.
 
 	// Method parameter description
 	// (1) message: error text when iStateCode is non-zero or transaction response XML for current transaction forwarded when iStateCode is zero.
