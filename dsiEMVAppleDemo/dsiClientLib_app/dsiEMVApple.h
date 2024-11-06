@@ -5,7 +5,7 @@
 // This was needed for Swift as it doesn't allow PascalCase, only CamelCase.
 // The __BRIDGING__ #define exists to remove the PascalCase for the framework APIs otherwise an "ambiguous use" will occur.
 // When using the framework from an Objective-C project, comment out the following #define.
-#define __BRIDGING__
+// #define __BRIDGING__
 
 @protocol dsiEMVAppleDelegate < NSObject >
 @optional

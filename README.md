@@ -2,18 +2,17 @@
 
 The dsiEMVApple demo application provides a sample dsiEMVApple integration using Objective-C. Using header file dsiEMVApple.h, Swift applications can use any of Datacap's xcframework functionality by creating a bridging header.
 
+# Getting started with dsiEMVAppleDemo and dsiEMVApple xcframework
 
-# Getting started with dsiEMVApple
-
-### Add dsiEMVApple.xcframework to your Xcode project
-1. In the project navigator, select the project or group within a project to which you want to add the framework.
-2. Choose File > Add Files to “Your Project Name”.
-3. Select the dsiEMVApple.xcframework, and click Add.
-4. In the project settings, choose the Build Phases tab.
-5. Under the Embed Frameworks section, choose "+" to add a new Embedded Framework.
-6. Select the dsiEMVApple.xcframework, and click Add.
-7. [Download Datacap's xcframework](https://datacapsystems.com/software/dsiEMVApple/dsiEMVApple.xcframework.zip)!
-
+### dsiEMVAppleDemo application and dsiEMVApple.xcframework
+1. Using Git, clone dsiEMVAppleDemo application or download the project ZIP file. Install/copy the project files into Xcode's project directory/folder. 
+2. [Download Datacap's xcframework](https://datacapsystems.com/software/dsiEMVApple/dsiEMVApple.xcframework.zip). Unzip dsiEMVApple.xcframework into the directory/folder where other frameworks are located. Note: The dsiEMVApple.xcframework contains three frameworks: 1) iOS (ios-arm64_armv7), 2) Simulator (ios-arm64_i386_x86_64-simulator), 3) Mac Catalyst (ios-arm64_x86_64-maccatalyst).
+3. In Xcode, open dsiEMVAppleDemo by selecting dsiClientLib_app.xcodeproj project directory/folder.
+4. In the "Build Phases" tab, within the "Link Binary With Libraries", there should a framework in the list (dsiEMVApple.framework), this has been left in place as an example. It may be removed by using the "minus". Using the "plus", the "Choose frameworks and libraries to add:" form will be displayed. Select the appropriate dsiEMVApple framework from the dsiEMVApple.xcframework that was unzipped in step #2.
+5. At this point, the product can be built and run as either an iOS, Simulator, or a Mac Catalyst application.
+6. The GUI is very simplistic. Looking through the source code in file ViewController.m, one can see how to interact with the functionality (the APIs) in dsiEMVApple.xcframework.
+7. In addition to the GUI, there is a very basic IP server that takes Datacap's transaction XML, process that XML, and returns resonse XML. In the upper left corner of the GUI, the IP address of the server is displayed (use 8080 as the port number).
+		  
 ### Include the framework in your code
 ```objective-c
 #import < dsiEMVApple/dsiEMVApple.h >
@@ -128,4 +127,4 @@ On SAF Forward All Event Running
 ```
 
 ### Report bugs
-If you encounter any bugs or issues with the latest version of dsiEMVApple, please report them to us by opening a [GitHub Issue](https://github.com/datacapsystems/dsiEMVAppleDemo/issues)!
+If you encounter any bugs or issues with the latest version of dsiEMVApple, please report them to us by opening a [GitHub Issue](https://github.com/datacapsystems/dsiEMVAppleDemo/issues).
