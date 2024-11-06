@@ -11,7 +11,7 @@ The dsiEMVApple demo application provides a sample dsiEMVApple integration using
 4. In the "Build Phases" tab, within the "Link Binary With Libraries", there should a framework in the list (dsiEMVApple.framework), this has been left in place as an example. It may be removed by using the "minus". Using the "plus", the "Choose frameworks and libraries to add:" form will be displayed. Select the appropriate dsiEMVApple framework from the dsiEMVApple.xcframework that was unzipped in step #2.
 5. At this point, the product can be built and run as either an iOS, Simulator, or a Mac Catalyst application.
 6. The GUI is very simplistic. Looking through the source code in file ViewController.m, one can see how to interact with the functionality (the APIs) in dsiEMVApple.xcframework.
-7. In addition to the GUI, there is a very basic IP server that takes Datacap's transaction XML, process that XML, and returns resonse XML. In the upper left corner of the GUI, the IP address of the server is displayed (use 8080 as the port number).
+7. In addition to the GUI, there is a very basic IP server that takes Datacap's transaction XML, process that XML, and returns response XML. In the upper left corner of the GUI, the IP address of the server is displayed (use 8080 as the port number).
 		  
 ### Include the framework in your code
 ```objective-c
@@ -20,7 +20,7 @@ The dsiEMVApple demo application provides a sample dsiEMVApple integration using
 
 ### Initialize the library
 ```objective-c
-// Create Datacap Apple client library class.
+// Create Datacap's Apple client library class.
 dsiEMVApple* m_dsiAppleClientLib = [ [ dsiEMVApple alloc ] init ];
 ```
 
@@ -29,7 +29,7 @@ dsiEMVApple* m_dsiAppleClientLib = [ [ dsiEMVApple alloc ] init ];
 NSString* m_nsReponse = [ m_dsiAppleClientLib EstablishBluetoothConnection : @"IDTECH-VP3300-79156" ];
 ```
 
-### Example usage to process a transcation
+### Example usage to process a transaction
 ```objective-c
 NSString* nsRequest = nil;
 NSString* nsResponse = nil;
